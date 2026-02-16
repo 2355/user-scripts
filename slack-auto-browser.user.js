@@ -16,17 +16,14 @@
 (function () {
   'use strict';
 
-  // Slack のリダイレクトページにある「use Slack in your browser」リンクを自動クリック
+  // Slack のリダイレクトページにある「open this link in your browser」リンクを自動クリック
   const tryClick = () => {
-    // "open this link in your browser" や "use Slack in your browser" 系のリンクを探す
+    // "open this link in your browser" のリンクを探す
     const links = document.querySelectorAll('a');
     for (const link of links) {
       const text = link.textContent.toLowerCase();
       if (
-        text.includes('use slack in your browser') ||
-        text.includes('open this link in your browser') ||
-        text.includes('continue in browser') ||
-        text.includes('ブラウザ')
+        text.includes('open this link in your browser')
       ) {
         link.click();
         return true;
@@ -48,3 +45,4 @@
     setTimeout(() => observer.disconnect(), 10000);
   }
 })();
+
